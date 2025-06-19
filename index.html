@@ -92,3 +92,193 @@ updateFooter();
 ```
 
 ---
+[17:31, 19.6.2025] סאלי 2: ```html
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מתוקים באבן יהודה</title>
+<style>
+  body { margin: 0; padding: 0; font-family: Arial, sans-serif; direction: rtl; background: #fff0f5; }
+  header { background: #ff69b4; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; }
+  #main-content, #deals-content { padding: 20px; }
+  #search-bar { margin-bottom: 20px; display: flex; gap: 5px; }
+  #search-input { flex: 1; padding: 10px; font-size: 16px; }
+  #search-button { padding: 10px 20px; background: #ff69b4; border: none; color: white; cursor: pointer; }
+  .products { display: flex; gap: 20px; flex-wrap: wrap; }
+  .product { width: 150px; background: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; text-align: center; }
+  .product img { width: 100%; height: auto; background: white; display: block; margin: 0 auto 10px auto; }
+  /* לחצן מבצעים בצד שמאל */
+[17:31, 19.6.2025] סאלי 2: #sidebar { position: fixed; top: 50%; left: 0; transform: translateY(-50%); background: #ff69b4; padding: 10px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; cursor: pointer; color: white; writing-mode: vertical-rl; text-orientation: upright; }
+  /* פס עם תאריך ושעה בתחתית */
+  #footer-bar { position: fixed; bottom: 0; width: 100%; background: #ffccd5; padding: 5px 0; text-align: center; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>מתוקים באבן יהודה</header>
+
+<div id="sidebar" onclick="showDeals()">מבצעים</div>
+
+<div id="main-content">
+  <div id="search-bar">
+    <input id="search-input" type="text" placeholder="חפש מוצר..." />
+    <button id="search-button">חפש</button>
+  </div>
+  <div class="products" id="products-list">
+    <div class="product" data-name="עוגיות שוקולד">
+      <img src="https://via.placeholder.com/150?text=עוגיה" alt="עוגיות שוקולד">
+      <h3>עוגיות שוקולד</h3>
+      <p>טעימות ומתוקות, מתאימות לכל אירוע.</p>
+    </div>
+    <div class="product" data-name="שוקו חם">
+      <img src="https://via.placeholder.com/150?text=שוקו" alt="שוקו חם">
+      <h3>שוקו חם</h3>
+      <p>משקה בטעמים עשירים ומחמם בימים קרים.</p>
+    </div>
+  </div>
+</div>
+
+<div id="deals-content" style="display:none;">
+[17:31, 19.6.2025] סאלי 2: <h2 style="color: blue; text-align: center;">מבצעים!</h2>
+  <button onclick="showHome()">דף הבית</button>
+  <p>כאן יהיו מבצעים מיוחדים...</p>
+</div>
+
+<div id="footer-bar"></div>
+
+<script>
+// פונקציית הסרת זמנית של 'סאלי2' ושעה בטופס
+// (נמחו - אין כרגע תוכן מיותר בחלק העליון)
+
+// הצגת / הסתרה בין דף הבית למבצעים
+function showDeals() {
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('deals-content').style.display = 'block';
+}
+function showHome() {
+  document.getElementById('deals-content').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+}
+
+// סינון חיפוש
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', () => {
+  const filter = document.getElementById('search-input').value.trim().toLowerCase();
+  document.querySelectorAll('.product').forEach(p => {
+    const name = p.getAttribute('data-name').toLowerCase();
+    p.style.display = name.includes(filter) ? 'block' : 'none';
+  });
+});
+
+// עדכון תאריך ושעה בתחתית
+function updateFooter() {
+  const now = new Date();
+  const text = now.toLocaleString('he-IL', { dateStyle: 'medium', timeStyle: 'medium' });
+  document.getElementById('footer-bar').textContent = text;
+}
+updateFooter();
+[17:31, 19.6.2025] סאלי 2: setInterval(updateFooter, 1000);
+</script>
+
+</body>
+</html>
+```
+
+---
+[17:31, 19.6.2025] סאלי 2: ```html
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מתוקים באבן יהודה</title>
+<style>
+  body { margin: 0; padding: 0; font-family: Arial, sans-serif; direction: rtl; background: #fff0f5; }
+  header { background: #ff69b4; color: white; padding: 20px; text-align: center; font-size: 28px; font-weight: bold; }
+  #main-content, #deals-content { padding: 20px; }
+  #search-bar { margin-bottom: 20px; display: flex; gap: 5px; }
+  #search-input { flex: 1; padding: 10px; font-size: 16px; }
+  #search-button { padding: 10px 20px; background: #ff69b4; border: none; color: white; cursor: pointer; }
+  .products { display: flex; gap: 20px; flex-wrap: wrap; }
+  .product { width: 150px; background: white; border: 1px solid #ddd; border-radius: 8px; padding: 10px; text-align: center; }
+  .product img { width: 100%; height: auto; background: white; display: block; margin: 0 auto 10px auto; }
+  /* לחצן מבצעים בצד שמאל */
+[17:31, 19.6.2025] סאלי 2: #sidebar { position: fixed; top: 50%; left: 0; transform: translateY(-50%); background: #ff69b4; padding: 10px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; cursor: pointer; color: white; writing-mode: vertical-rl; text-orientation: upright; }
+  /* פס עם תאריך ושעה בתחתית */
+  #footer-bar { position: fixed; bottom: 0; width: 100%; background: #ffccd5; padding: 5px 0; text-align: center; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>מתוקים באבן יהודה</header>
+
+<div id="sidebar" onclick="showDeals()">מבצעים</div>
+
+<div id="main-content">
+  <div id="search-bar">
+    <input id="search-input" type="text" placeholder="חפש מוצר..." />
+    <button id="search-button">חפש</button>
+  </div>
+  <div class="products" id="products-list">
+    <div class="product" data-name="עוגיות שוקולד">
+      <img src="https://via.placeholder.com/150?text=עוגיה" alt="עוגיות שוקולד">
+      <h3>עוגיות שוקולד</h3>
+      <p>טעימות ומתוקות, מתאימות לכל אירוע.</p>
+    </div>
+    <div class="product" data-name="שוקו חם">
+      <img src="https://via.placeholder.com/150?text=שוקו" alt="שוקו חם">
+      <h3>שוקו חם</h3>
+      <p>משקה בטעמים עשירים ומחמם בימים קרים.</p>
+    </div>
+  </div>
+</div>
+
+<div id="deals-content" style="display:none;">
+[17:31, 19.6.2025] סאלי 2: <h2 style="color: blue; text-align: center;">מבצעים!</h2>
+  <button onclick="showHome()">דף הבית</button>
+  <p>כאן יהיו מבצעים מיוחדים...</p>
+</div>
+
+<div id="footer-bar"></div>
+
+<script>
+// פונקציית הסרת זמנית של 'סאלי2' ושעה בטופס
+// (נמחו - אין כרגע תוכן מיותר בחלק העליון)
+
+// הצגת / הסתרה בין דף הבית למבצעים
+function showDeals() {
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('deals-content').style.display = 'block';
+}
+function showHome() {
+  document.getElementById('deals-content').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+}
+
+// סינון חיפוש
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', () => {
+  const filter = document.getElementById('search-input').value.trim().toLowerCase();
+  document.querySelectorAll('.product').forEach(p => {
+    const name = p.getAttribute('data-name').toLowerCase();
+    p.style.display = name.includes(filter) ? 'block' : 'none';
+  });
+});
+
+// עדכון תאריך ושעה בתחתית
+function updateFooter() {
+  const now = new Date();
+  const text = now.toLocaleString('he-IL', { dateStyle: 'medium', timeStyle: 'medium' });
+  document.getElementById('footer-bar').textContent = text;
+}
+updateFooter();
+[17:31, 19.6.2025] סאלי 2: setInterval(updateFooter, 1000);
+</script>
+
+</body>
+</html>
+```
+
+---

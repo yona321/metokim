@@ -1,7 +1,3 @@
- ```html
-
-
-
 
 <!DOCTYPE html>
 <html lang="he">
@@ -15,51 +11,70 @@
     direction: rtl;
     margin: 0; padding: 0;
     background: #fff0f5;
-  }
-  header {
-    background: #ff69b4;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
+    display: flex;
+    min-height: 100vh;
   }
   nav {
     background: #d1476f;
-    padding: 10px 15px;
+    width: 180px;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    padding-top: 30px;
+    box-sizing: border-box;
   }
   nav a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    padding: 15px 20px;
     cursor: pointer;
+    border-bottom: 1px solid #b7375f;
   }
   nav a:hover {
-    text-decoration: underline;
+    background-color: #ff69b4;
   }
-  #content {
+  main {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
     max-width: 900px;
-    margin: 20px auto;
-    padding: 0 15px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+  header {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d1476f;
+    text-align: center;
+    margin-bottom: 20px;
   }
   #search-bar {
-    margin: 20px 0;
+    margin-bottom: 20px;
     display: flex;
     max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
   }
   #search-input {
     flex: 1;
-    padding: 10px;
+ padding: 10px;
     font-size: 16px;
+    border: 2px solid #d1476f;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
   }
   #search-button {
     padding: 10px 20px;
-    background: #ff69b4;
+    background: #d1476f;
     border: none;
- color: white;
+    color: white;
+    font-weight: bold;
     cursor: pointer;
+    border-radius: 0 5px 5px 0;
   }
   .products {
     display: grid;
@@ -83,21 +98,39 @@
   .product h3 {
     margin: 10px 0 5px 0;
   }
+  .product p {
+    margin: 0;
+    font-style: italic;
+    color: #777;
+    font-size: 14px;
+  }
   footer {
     background: #d1476f;
     color: white;
     padding: 10px;
     text-align: center;
     position: fixed;
-    width: 100%;
+    width: calc(100% - 180px);
     bottom: 0;
     font-weight: bold;
+    left: 180px;
+    box-sizing: border-box;
+  }
+  #deals-page p {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #d1476f;
+    font-weight: bold;
+    text-align: center;
+  }
+  #hours-page p {
+    font-size: 18px;
+ text-align: center;
+    color: #555;
   }
 </style>
 </head>
 <body>
-
-<header>מתוקים באבן יהודה</header>
 
 <nav>
   <a href="#" id="home-link">דף הבית</a>
@@ -105,7 +138,8 @@
   <a href="#" id="hours-link">שעות פעילות</a>
 </nav>
 
-<div id="content">
+<main>
+  <header>מתוקים באבן יהודה</header>
 
   <div id="home-page">
 
@@ -116,45 +150,42 @@
 
     <div class="products" id="products-list">
       <div class="product" data-name="עוגיות שוקולד" data-keywords="עוגיות שוקולד עוגיה עוגיות">
- <img src="https://i.imgur.com/YRi1DUS.png" alt="עוגיות שוקולד" />
+        <img src="https://cdn-icons-png.flaticon.com/512/132/132153.png" alt="עוגיות שוקולד" />
         <h3>עוגיות שוקולד - 4 שקלים</h3>
-        <p>טעימות ומתוקות, מתאימות לכל אירוע.</p>
       </div>
-      <div class="product" data-name="שוקו" data-keywords="שוקו משקה שוקולד חם">
-        <img src="https://i.imgur.com/uP1JtFo.png" alt="שוקו" />
+      <div class="product" data-name="שוקו" data-keywords="שוקו משקה מתוק קר">
+        <img src="https://cdn-icons-png.flaticon.com/512/2909/2909745.png" alt="שוקו" />
         <h3>שוקו - 6 שקלים</h3>
-        <p>משקה חם ומתוק, מושלם בימים קרירים.</p>
+        <p>משקה קר ומתוק, טעים בכל שעה ביום.</p>
       </div>
       <div class="product" data-name="קרפים" data-keywords="קרפים קרפ מארז">
-        <img src="https://i.imgur.com/Qk8JuWz.png" alt="קרפים" />
+        <img src="https://cdn-icons-png.flaticon.com/512/2933/2933188.png" alt="קרפים" />
         <h3>מארז 10 קרפים - 15 שקלים</h3>
-        <p>קרפים טעימים במארז משתלם.</p>
       </div>
     </div>
 
   </div>
-
-  <div id="deals-page" style="display:none;">
-    <h2 style="color: blue; margin-bottom: 20px;">מבצעים!</h2>
+<div id="deals-page" style="display:none;">
+    <h2 style="color: blue; margin-bottom: 20px; text-align:center;">מבצעים!</h2>
     <p>!שתי שוקו בעשרה שקלים!</p>
     <p>!שלושה עוגיות בעשרה שקלים!</p>
     <p>!עוגיה+שוקו בתשעה שקלים!</p>
   </div>
 
   <div id="hours-page" style="display:none;">
-    <h2>שעות פעילות</h2>
+    <h2 style="text-align:center;">שעות פעילות</h2>
     <p>עוד יתווספו כאן פרטים בקרוב...</p>
   </div>
-
-</div>
+</main>
 
 <footer id="footer">טוען תאריך ושעה...</footer>
 
 <script>
-  const homeLink = document.getElementById('home-link');
+  //   console.log  const homeLink = document.getElementById('home-link');
   const dealsLink = document.getElementById('deals-link');
   const hoursLink = document.getElementById('hours-link');
- const homePage = document.getElementById('home-page');
+
+  const homePage = document.getElementById('home-page');
   const dealsPage = document.getElementById('deals-page');
   const hoursPage = document.getElementById('hours-page');
 
@@ -172,7 +203,7 @@
   });
 
   function showPage(page) {
-    homePage.style.display = 'none';
+ homePage.style.display = 'none';
     dealsPage.style.display = 'none';
     hoursPage.style.display = 'none';
 
@@ -181,20 +212,20 @@
     else if (page === 'hours') hoursPage.style.display = 'block';
   }
 
-  // תאריך ושעה מתעדכנים בפוטר
+  // עדכון תאריך ושעה אמיתיים בפוטר
   function updateDateTime() {
     const footer = document.getElementById('footer');
     const now = new Date();
-    const dateStr = now.toLocaleDateString('he-IL');
-    const timeStr = now.toLocaleTimeString('he-IL');
+    const dateStr = now.toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    const timeStr = now.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     footer.textContent = תאריך: dateStr | שעה:{timeStr};
   }
   updateDateTime();
   setInterval(updateDateTime, 1000);
 
-  // עמדת חיפוש מוצלחת
+  // חיפוש מוצרים בדף הבית
   const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
+  const searchButton = document.getElementById('search-button');
   const productsList = document.getElementById('products-list');
 
   searchButton.addEventListener('click', () => {
@@ -202,7 +233,7 @@ const searchButton = document.getElementById('search-button');
     const products = productsList.querySelectorAll('.product');
     let anyVisible = false;
     products.forEach(product => {
-      const name = product.getAttribute('data-name').toLowerCase();
+ const name = product.getAttribute('data-name').toLowerCase();
       const keywords = product.getAttribute('data-keywords').toLowerCase();
       if (name.includes(filter) || keywords.includes(filter)) {
         product.style.display = 'block';
@@ -211,10 +242,13 @@ const searchButton = document.getElementById('search-button');
         product.style.display = 'none';
       }
     });
-    // אם לא מצאנו כלום אפשר להוסיף הודעה - כרגע לא
+    if (!anyVisible) {
+      alert('לא נמצאו מוצרים מתאימים לחיפוש.');
+    }
   });
+
 </script>
 
 </body>
 </html>
-```  
+```

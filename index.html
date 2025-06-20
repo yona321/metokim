@@ -15,9 +15,9 @@ section{flex:1;padding:20px;display:none;}
 section.active{display:block;}
 #search-bar{display:flex;gap:10px;max-width:400px;margin-bottom:20px;}
 #search-input{flex:1;padding:10px;border:2px solid #ff69b4;border-radius:4px;}
-#search-button{padding:10px 20px;background:#ff69b4;border:none;color:white;cursor:pointer;border-radius:4px;}
- #search-button:hover{background:#d14a8f;}
-.product{border:1px solid #ddd;padding:15px;border-radius:8px;margin-bottom:10px;}
+#search-button{padding:12px 24px;background:#ff69b4;border:none;color:white;cursor:pointer;border-radius:4px;font-size:16px;}
+#search-button:hover{background:#d14a8f;}
+ .product{border:1px solid #ddd;padding:15px;border-radius:8px;margin-bottom:10px;}
 footer{background:#ff6f9a;color:white;text-align:center;padding:10px;}
 #date-time{font-size:14px;}
 </style>
@@ -31,7 +31,6 @@ footer{background:#ff6f9a;color:white;text-align:center;padding:10px;}
 <a id="tab-hours">שעות פעילות</a>
 <a id="tab-delivery">משלוחים</a>
 </nav>
-
 <section id="home" class="active">
   <div id="search-bar">
     <input id="search-input" placeholder="חפש מוצר..."/>
@@ -43,28 +42,23 @@ footer{background:#ff6f9a;color:white;text-align:center;padding:10px;}
     <div class="product">מארז 10 קרפים – 15 שקלים</div>
   </div>
 </section>
-
 <section id="deals">
   <div class="product">!שתי שוקו בעשרה שקלים</div>
   <div class="product">!שלושה עוגיות בעשרה שקלים</div>
   <div class="product">!עוגיה+שוקו בתשעה שקלים</div>
 </section>
-
 <section id="hours">
   <div class="product">שעות פעילות יפורסמו בקרוב.</div>
 </section>
-
 <section id="delivery">
-  <div class="product">פרטי משלוחים יפורסמו בקרוב.</div>
+  <div class="product"><strong>איסוף עצמי:</strong><br/>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף.<br/>הגעה לכתובת: השרון 1.</div>
+ <div class="product"><strong>משלוח:</strong><br/>בתוספת 6 שקלים נגיע עד לביתכם עם האוכל הטעים!<br/>להזמנה התקשרו או כיתבו הודעה ל-0545611680</div>
 </section>
 </main>
-
-<footer>
-  <div id="date-time">טוען תאריך ושעה…</div>
-</footer>
+<footer><div id="date-time">טוען תאריך ושעה…</div></footer>
 
 <script>
- const tabs = ['home','deals','hours','delivery'];
+const tabs=['home','deals','hours','delivery'];
 tabs.forEach(id=>{
   document.getElementById('tab-'+id).onclick=()=>{
     tabs.forEach(t=>{
@@ -73,29 +67,22 @@ tabs.forEach(id=>{
     });
     document.getElementById('tab-'+id).classList.add('active');
     document.getElementById(id).classList.add('active');
-  }
+  };
 });
-
 function search(){
   const term=document.getElementById('search-input').value.trim();
   const items=[...document.querySelectorAll('#products .product')];
-  items.forEach(el=>{
-    el.style.display = el.textContent.includes(term) ? 'block' : 'none';
-  });
+  items.forEach(el=>el.style.display=el.textContent.includes(term)?'block':'none');
 }
+document.getElementById('search-button').onclick=search;
+document.getElementById('search-input').onkeydown=e=>{if(e.key==='Enter')search();};
 
-document.getElementById('search-button').onclick = search;
-document.getElementById('search-input').onkeydown = e=>{
-  if(e.key==='Enter') search();
-};
-
-function updateDateTime(){
+function updateDate(){
   const now=new Date(), opts={year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
-  document.getElementById('date-time').textContent =
-    now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+ document.getElementById('date-time').textContent=now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
 }
-setInterval(updateDateTime,1000);
-updateDateTime();
+setInterval(updateDate,1000);
+updateDate();
 </script>
 </body>
 </html>

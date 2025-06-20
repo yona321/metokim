@@ -10,13 +10,13 @@ body { font-family:Arial;direction:rtl;margin:0;padding:0;display:flex;min-heigh
 header { background:#ff69b4;color:white;padding:20px;text-align:center;font-size:28px;font-weight:bold; }
 main { flex:1;display:flex;background:#fff0f5; }
 nav { background:#ff69b4;width:200px;padding-top:20px;display:flex;flex-direction:column;gap:10px; }
-nav a { color:white;text-decoration:none;padding:10px;font-weight:bold;border-radius:5px;cursor:pointer;transition:background .3s; }
+nav a { color:white;text-decoration:none;padding:10px;font-weight:bold;border-radius:5px;cursor:pointer;transition:background .3s; display:block; text-align:center; }
 nav a:hover, nav a.active { background:#d14a8f; }
 section.content { flex:1;padding:20px;box-sizing:border-box;max-width:900px;margin-left:20px; }
 #search-bar { max-width:400px;margin:0 auto 20px;display:flex;gap:10px; }
 #search-input { flex:1;padding:10px;font-size:16px;border:2px solid #ff69b4;border-radius:4px; }
-#search-button { padding:10px 20px;background:#ff69b4;border:none;color:white;font-size:16px;cursor:pointer;border-radius:4px;min-width:80px;transition:background .3s; }
- #search-button:hover { background:#d14a8f; }
+ #search-button { padding:10px 20px;background:#ff69b4;border:none;color:white;font-size:16px;cursor:pointer;border-radius:4px;min-width:80px;transition:background .3s; }
+#search-button:hover { background:#d14a8f; }
 .product { background:white;border:1px solid #ddd;padding:15px;border-radius:8px;text-align:center;box-shadow:0 0 5px rgba(0,0,0,0.1);margin-bottom:15px; }
 footer { background:#ff6f9a;color:white;text-align:center;padding:10px 0;font-weight:bold;letter-spacing:1px;margin-top:auto; }
 #date-time { font-size:14px;margin-top:4px; }
@@ -27,98 +27,86 @@ footer { background:#ff6f9a;color:white;text-align:center;padding:10px 0;font-we
 <header>מתוקים באבן יהודה</header>
 <main>
 <nav>
-<a href="#" id="home-link" class="active">דף הבית</a>
-<a href="#" id="deals-link">מבצעים</a>
-<a href="#" id="hours-link">שעות פעילות</a>
-<a href="#" id="delivery-link">משלוחים</a>
+  <a href="#" id="home-link" class="active">דף הבית</a>
+  <a href="#" id="deals-link">מבצעים</a>
+  <a href="#" id="hours-link">שעות פעילות</a>
+  <a href="#" id="delivery-link">משלוחים</a>
 </nav>
-<section class="content" id="main-content">
-<!-- תוכן ראשוני: דף הבית -->
-<div id="search-bar">
-  <input id="search-input" type="text" placeholder="חפש מוצר..." />
-  <button id="search-button">חפש</button>
-</div>
-<div id="products-list">
-  <div class="product" data-name="עוגיות שוקולד"><h3>עוגיות שוקולד - 4 שקלים</h3></div>
-  <div class="product" data-name="שוקו"><h3>שוקו - 6 שקלים</h3></div>
-  <div class="product" data-name="קרפים"><h3>מארז 10 קרפים - 15 שקלים</h3></div>
-</div>
-</section>
+<section class="content" id="main-content"></section>
 </main>
 <footer><div id="date-time">טוען תאריך ושעה...</div></footer>
 <script>
+const productsData = {
+  'עוגיות שוקולד':'עוגיות שוקולד - 4 שקלים',
+  'שוקו':'שוקו - 6 שקלים',
+  'קרפים':'מארז 10 קרפים - 15 שקלים'
+};
+
 function updateDateTime(){
   const now=new Date();
-  const opts={year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false};
-  document.getElementById('date-time').textContent=now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+ const opts={year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false};
+  document.getElementById('date-time').textContent=
+    now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
 }
 setInterval(updateDateTime,1000);
 updateDateTime();
 
-const productsData = {
-  'עוגיות שוקולד': 'עוגיות שוקולד - 4 שקלים',
-  'שוקו': 'שוקו - 6 שקלים',
-  'קרפים': 'מארז 10 קרפים - 15 שקלים'
-};
-
-function renderHome() {
-  document.getElementById('main-content').innerHTML=`
+function renderHome(){
+  document.getElementById('main-content').innerHTML = `
     <div id="search-bar">
       <input id="search-input" type="text" placeholder="חפש מוצר..." />
       <button id="search-button">חפש</button>
     </div>
     <div id="products-list">
-      <div class="product" data-name="עוגיות שוקולד"><h3>productsData['עוגיות שוקולד']</h3></div>
-      <div class="product" data-name="שוקו"><h3>{productsData['שוקו']}</h3></div>
-      <div class="product" data-name="קרפים"><h3>${productsData['קרפים']}</h3></div>
+      Object.values(productsData).map(val=><div class="product"><h3>{val}</h3></div>).join('')}
     </div>`;
   initSearch();
 }
-function renderDeals() {
-  document.getElementById('main-content').innerHTML=`
+
+function renderDeals(){
+  document.getElementById('main-content').innerHTML = `
     <div class="discount-message">!שתי שוקו בעשרה שקלים</div>
- <div class="discount-message">!שלושה עוגיות בעשרה שקלים</div>
+    <div class="discount-message">!שלושה עוגיות בעשרה שקלים</div>
     <div class="discount-message">!עוגיה+שוקו בתשעה שקלים</div>`;
 }
-function renderHours() {
-  document.getElementById('main-content').innerHTML=`
+
+function renderHours(){
+  document.getElementById('main-content').innerHTML = `
     <h2 style="color:#0056b3;">שעות פעילות</h2>
     <p>יפורסמו בקרוב.</p>`;
 }
-function renderDelivery() {
-  document.getElementById('main-content').innerHTML=`
+
+function renderDelivery(){
+  document.getElementById('main-content').innerHTML = `
     <h2 style="color:#0056b3;">משלוחים</h2>
     <p>יפורסמו בקרוב.</p>`;
 }
-
-document.getElementById('home-link').addEventListener('click', e=>{e.preventDefault();activateLink('home');renderHome();});
-document.getElementById('deals-link').addEventListener('click', e=>{e.preventDefault();activateLink('deals');renderDeals();});
-document.getElementById('hours-link').addEventListener('click', e=>{e.preventDefault();activateLink('hours');renderHours();});
-document.getElementById('delivery-link').addEventListener('click', e=>{e.preventDefault();activateLink('delivery');renderDelivery();});
-
-function activateLink(tab) {
-  ['home','deals','hours','delivery'].forEach(t => {
-    const el = document.getElementById(t+'-link');
-    el.classList.toggle('active', t===tab);
+function activate(tab){
+  ['home','deals','hours','delivery'].forEach(t=>{
+    document.getElementById(t+'-link').classList.toggle('active', t===tab);
   });
 }
+
+document.getElementById('home-link').addEventListener('click',e=>{e.preventDefault();activate('home');renderHome();});
+document.getElementById('deals-link').addEventListener('click',e=>{e.preventDefault();activate('deals');renderDeals();});
+document.getElementById('hours-link').addEventListener('click',e=>{e.preventDefault();activate('hours');renderHours();});
+document.getElementById('delivery-link').addEventListener('click',e=>{e.preventDefault();activate('delivery');renderDelivery();});
+
+// הפעלה ראשונית
+renderHome();
 
 function initSearch(){
   const btn=document.getElementById('search-button');
   btn.addEventListener('click',()=>{
-const q=document.getElementById('search-input').value.trim();
-    const results = Object.entries(productsData).filter(([k])=>k.includes(q));
-    const listDiv=document.getElementById('products-list');
-    listDiv.innerHTML=”;
-    if(results.length)
-      results.forEach(([k,v])=>listDiv.innerHTML+=<div class="product" data-name="{k}"><h3>${v}</h3></div>);
-    } else {
-      listDiv.innerHTML='<p>לא נמצאו תוצאות לחיפוש.</p>';
-    }
+    const q=document.getElementById('search-input').value.trim();
+    const resultDiv = document.getElementById('products-list');
+    resultDiv.innerHTML = '';
+    const items = Object.entries(productsData)
+                         .filter(([k])=>k.includes(q))
+                         .map(([k,v])=><div class="product"><h3>${v}</h3></div>);
+    resultDiv.innerHTML = items.length ? items.join('') : '<p>לא נמצאו תוצאות לחיפוש.</p>';
   });
 }
-
-initSearch();
 </script>
 </body>
 </html>

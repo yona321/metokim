@@ -1,0 +1,101 @@
+```html
+<!DOCTYPE html>
+<html lang="he">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>מתוקים באבן יהודה</title>
+<style>
+  body { font-family: Arial; direction: rtl; background: #fff0f5; margin:0; padding:0; }
+  header { background:#ff69b4; color:white; padding:20px; text-align:center; font-size:28px; font-weight:bold; }
+  nav { display:flex; justify-content:center; gap:10px; padding:10px; background:#ff4d79; }
+  nav button { background:#fff; border:none; padding:10px 20px; cursor:pointer; border-radius:4px; font-weight:bold; }
+  nav button.active, nav button:hover { background:#ff69b4; color:white; }
+  #search-bar { max-width:400px; margin:20px auto; display:flex; }
+  #search-input { flex:1; padding:10px; border:1px solid #ddd; border-radius:4px 0 0 4px; }
+  #search-button { padding:10px 20px; background:#ff69b4; color:white; border:none; cursor:pointer; border-radius:0 4px 4px 0; }
+  .products { max-width:900px; margin:20px auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:15px; }\ .product { background:white; border:1px solid #ddd; padding:15px; border-radius:8px; text-align:center; }
+  .product img { width:100%; height:150px; object-fit:contain; border-radius:8px; background:white; }
+  .product h3 { margin:10px 0 5px 0; }
+  #offers { display:none; max-width:900px; margin:20px auto; text-align:center; }
+  #offers p { font-size:20px; margin:10px 0; color:#ff397b; font-weight:bold; }
+  footer { position:fixed; bottom:0; left:0; right:0; background:#ff5c8d; color:white; text-align:center; padding:10px; font-weight:bold; }
+</style>
+</head>
+<body>
+<header>מתוקים באבן יהודה</header>
+
+<nav>
+  <button id="btn-home" class="active">דף הבית</button>
+  <button id="btn-offers">מבצעים</button>
+</nav>
+
+<div id="home">
+  <div id="search-bar">
+    <input id="search-input" type="text" placeholder="חפש מוצר..." />
+    <button id="search-button">חפש</button>
+  </div>
+  <div class="products" id="products-list">
+    <div class="product" data-name="עוגיות שוקולד">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/70/Chocolate_chip_cookies_-_timelesscook.jpg" alt="עוגיות שוקולד" />
+      <h3>עוגיות שוקולד - 4 ש"ח</h3>
+    </div>
+    <div class="product" data-name="שוקו">
+[12:10, 20.6.2025] סאלי 2: <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Glass_of_chocolate_milk.jpg" alt="שוקו" />
+      <h3>שוקו - 6 ש"ח</h3>
+    </div>
+  </div>
+</div>
+
+<div id="offers">
+  <p>!שתי שוקו בעשרה שקלים!</p>
+  <p>!שלושה עוגיות בעשרה שקלים!</p>
+  <p>!עוגיה+שוקו בתשעה שקלים!</p>
+</div>
+
+<footer id="footer-date"></footer>
+
+<script>
+  const btnHome = document.getElementById('btn-home');
+  const btnOffers = document.getElementById('btn-offers');
+  const home = document.getElementById('home');
+  const offers = document.getElementById('offers');
+  const searchBar = document.getElementById('search-bar');
+  const productsList = document.getElementById('products-list');
+  const footer = document.getElementById('footer-date');
+  const searchButton = document.getElementById('search-button');
+  const searchInput = document.getElementById('search-input');
+
+  btnHome.onclick = () => {
+    btnHome.classList.add('active');
+    btnOffers.classList.remove('active');
+    home.style.display = 'block';
+    offers.style.display = 'none';
+  };
+  btnOffers.onclick = () => {
+    btnOffers.classList.add('active');
+    btnHome.classList.remove('active');
+    home.style.display = 'none';
+    offers.style.display = 'block';
+  };
+  searchButton.onclick = () => {
+const filter = searchInput.value.trim().toLowerCase();
+    document.querySelectorAll('.product').forEach(p => {
+      p.style.display = p.getAttribute('data-name').toLowerCase().includes(filter) ? 'block' : 'none';
+    });
+  };
+  function updateTime() {
+    const now = new Date();
+    footer.textContent = now.toLocaleDateString('he-IL') + ' | ' + now.toLocaleTimeString('he-IL');
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+</body>
+</html>
+```
+
+וודא שהקוד הוא בדיוק כמו למעלה, וששמות התמונות תקינים – לדוגמה במקרה שלי השתמשתי ב־Chocolate_chip_cookies_-_timelesscook.jpg, שזה קיים בויקיפדיה הציבורית.
+
+אם עדיין לא רואים – תבדוק בקונסול של הדפדפן (F12 → Console).  
+אם תמצא שגיאה כמו 404 על התמונות – תגיד לי, אעדכן לתמונות זמינות יותר.

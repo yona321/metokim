@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="he">
 <head>
 <meta charset="UTF-8" />
@@ -13,10 +14,10 @@ nav a { color:white;text-decoration:none;padding:10px;font-weight:bold;border-ra
 nav a:hover, nav a.active { background:#d14a8f; }
 section.content { flex:1;padding:20px;box-sizing:border-box;max-width:900px;margin-left:20px; }
 #search-bar { max-width:400px;margin:0 auto 20px;display:flex;gap:10px; }
-#search-input { flex:1;padding:10px;font-size:16px; }
+#search-input { flex:1;padding:10px;font-size:16px;border:2px solid #ff69b4;border-radius:4px; }
 #search-button { padding:10px 20px;background:#ff69b4;border:none;color:white;font-size:16px;cursor:pointer;border-radius:4px;min-width:80px;transition:background .3s; }
-#search-button:hover { background:#d14a8f; }
- .product { background:white;border:1px solid #ddd;padding:15px;border-radius:8px;text-align:center;box-shadow:0 0 5px rgba(0,0,0,0.1);margin-bottom:15px; }
+ #search-button:hover { background:#d14a8f; }
+.product { background:white;border:1px solid #ddd;padding:15px;border-radius:8px;text-align:center;box-shadow:0 0 5px rgba(0,0,0,0.1);margin-bottom:15px; }
 footer { background:#ff6f9a;color:white;text-align:center;padding:10px 0;font-weight:bold;letter-spacing:1px;margin-top:auto; }
 #date-time { font-size:14px;margin-top:4px; }
 .discount-message { color:#2e7d32;background:#c9e4ca;padding:10px;border-radius:6px;font-weight:bold;font-size:16px;margin:15px 0; }
@@ -32,27 +33,91 @@ footer { background:#ff6f9a;color:white;text-align:center;padding:10px 0;font-we
 <a href="#" id="delivery-link">משלוחים</a>
 </nav>
 <section class="content" id="main-content">
-<div id="search-section">
+<!-- תוכן ראשוני: דף הבית -->
 <div id="search-bar">
-<input id="search-input" type="text" placeholder="חפש מוצר..." />
-<button id="search-button">חפש</button>
+  <input id="search-input" type="text" placeholder="חפש מוצר..." />
+  <button id="search-button">חפש</button>
 </div>
 <div id="products-list">
-<div class="product" data-name="עוגיות שוקולד"><h3>עוגיות שוקולד - 4 שקלים</h3></div>
-<div class="product" data-name="שוקו"><h3>שוקו - 6 שקלים</h3></div>
-<div class="product" data-name="קרפים"><h3>מארז 10 קרפים - 15 שקלים</h3></div>
-</div>
+  <div class="product" data-name="עוגיות שוקולד"><h3>עוגיות שוקולד - 4 שקלים</h3></div>
+  <div class="product" data-name="שוקו"><h3>שוקו - 6 שקלים</h3></div>
+  <div class="product" data-name="קרפים"><h3>מארז 10 קרפים - 15 שקלים</h3></div>
 </div>
 </section>
 </main>
 <footer><div id="date-time">טוען תאריך ושעה...</div></footer>
 <script>
- function updateDateTime(){const now=new Date();const opts={year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false};document.getElementById('date-time').textContent=now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);}
-setInterval(updateDateTime,1000);updateDateTime();
-const links=[...document.querySelectorAll('nav a')];
-const pages={'home-link':<div id="search-section"><div id="search-bar"><input id="search-input" type="text" placeholder="חפש מוצר..." /><button id="search-button">חפש</button></div><div id="products-list"><div class="product" data-name="עוגיות שוקולד"><h3>עוגיות שוקולד - 4 שקלים</h3></div><div class="product" data-name="שוקו"><h3>שוקו - 6 שקלים</h3></div><div class="product" data-name="קרפים"><h3>מארז 10 קרפים - 15 שקלים</h3></div></div></div>, 'deals-link':<div class="discount-message">!שתי שוקו בעשרה שקלים</div><div class="discount-message">!שלושה עוגיות בעשרה שקלים</div><div class="discount-message">!עוגיה+שוקו בתשעה שקלים</div>, 'hours-link':<h2 style="color:#0056b3;">שעות פעילות</h2><p>יפורסמו בקרוב.</p>, 'delivery-link':<h2 style="color:#0056b3;">משלוחים</h2><p>יפורסמו בקרוב.</p>};
- links.forEach(link=>{link.addEventListener('click',e=>{e.preventDefault();links.forEach(l=>l.classList.remove('active'));link.classList.add('active');document.getElementById('main-content').innerHTML=pages[link.id];if(link.id==='home-link')initSearch();});});
-function initSearch(){const btn=document.getElementById('search-button');if(!btn)return;btn.addEventListener('click',()=>{const q=document.getElementById('search-input').value.trim().toLowerCase();const prods=[...document.querySelectorAll('.product')];let found=false;document.getElementById('products-list').innerHTML='';['עוגיות שוקולד','שוקו','קרפים'].forEach(name=>{if(name.includes(q)){found=true;const txt=name==='קרפים'?'מארז 10 קרפים - 15 שקלים':name+' - '+(name==='עוגיות שוקולד'? '4' : '6')+' שקלים';document.getElementById('products-list').innerHTML+=<div class="product" data-name="name"><h3>{txt}</h3></div>;}});if(!found)document.getElementById('products-list').innerHTML='<p>לא נמצאו תוצאות לחיפוש.</p>'});}
+function updateDateTime(){
+  const now=new Date();
+  const opts={year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false};
+  document.getElementById('date-time').textContent=now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+}
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+const productsData = {
+  'עוגיות שוקולד': 'עוגיות שוקולד - 4 שקלים',
+  'שוקו': 'שוקו - 6 שקלים',
+  'קרפים': 'מארז 10 קרפים - 15 שקלים'
+};
+
+function renderHome() {
+  document.getElementById('main-content').innerHTML=`
+    <div id="search-bar">
+      <input id="search-input" type="text" placeholder="חפש מוצר..." />
+      <button id="search-button">חפש</button>
+    </div>
+    <div id="products-list">
+      <div class="product" data-name="עוגיות שוקולד"><h3>productsData['עוגיות שוקולד']</h3></div>
+      <div class="product" data-name="שוקו"><h3>{productsData['שוקו']}</h3></div>
+      <div class="product" data-name="קרפים"><h3>${productsData['קרפים']}</h3></div>
+    </div>`;
+  initSearch();
+}
+function renderDeals() {
+  document.getElementById('main-content').innerHTML=`
+    <div class="discount-message">!שתי שוקו בעשרה שקלים</div>
+ <div class="discount-message">!שלושה עוגיות בעשרה שקלים</div>
+    <div class="discount-message">!עוגיה+שוקו בתשעה שקלים</div>`;
+}
+function renderHours() {
+  document.getElementById('main-content').innerHTML=`
+    <h2 style="color:#0056b3;">שעות פעילות</h2>
+    <p>יפורסמו בקרוב.</p>`;
+}
+function renderDelivery() {
+  document.getElementById('main-content').innerHTML=`
+    <h2 style="color:#0056b3;">משלוחים</h2>
+    <p>יפורסמו בקרוב.</p>`;
+}
+
+document.getElementById('home-link').addEventListener('click', e=>{e.preventDefault();activateLink('home');renderHome();});
+document.getElementById('deals-link').addEventListener('click', e=>{e.preventDefault();activateLink('deals');renderDeals();});
+document.getElementById('hours-link').addEventListener('click', e=>{e.preventDefault();activateLink('hours');renderHours();});
+document.getElementById('delivery-link').addEventListener('click', e=>{e.preventDefault();activateLink('delivery');renderDelivery();});
+
+function activateLink(tab) {
+  ['home','deals','hours','delivery'].forEach(t => {
+    const el = document.getElementById(t+'-link');
+    el.classList.toggle('active', t===tab);
+  });
+}
+
+function initSearch(){
+  const btn=document.getElementById('search-button');
+  btn.addEventListener('click',()=>{
+const q=document.getElementById('search-input').value.trim();
+    const results = Object.entries(productsData).filter(([k])=>k.includes(q));
+    const listDiv=document.getElementById('products-list');
+    listDiv.innerHTML=”;
+    if(results.length)
+      results.forEach(([k,v])=>listDiv.innerHTML+=<div class="product" data-name="{k}"><h3>${v}</h3></div>);
+    } else {
+      listDiv.innerHTML='<p>לא נמצאו תוצאות לחיפוש.</p>';
+    }
+  });
+}
+
 initSearch();
 </script>
 </body>

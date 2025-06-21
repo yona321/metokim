@@ -1,232 +1,180 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="he">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>מתוקים באבן יהודה</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    direction: rtl;
-    background: #fff4e6;
-  }
-  header {
-    background-color: #d35400;
-    color: white;
-    text-align: center;
-    padding: 20px 10px;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  nav {
-    width: 200px;
-    background: #f8c471;
-    height: 100vh;
-    float: right;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-  }
-  nav a {
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #6e2c00;
-    font-weight: bold;
-    border-bottom: 1px solid #e59866;
-    cursor: pointer;
-  }
-  nav a:hover {
-    background-color: #d35400;
-    color: white;
-  }
-  main {
-    margin-right: 210px;
-    padding: 20px;
-  }
-  #date-time {
-    margin-top: 20px;
-    font-size: 14px;
-    color: #6e2c00;
-    text-align: center;
-  }
-  #search-bar {
-    margin-bottom: 20px;
-  }
-  #search-input {
-    width: 70%;
-    padding: 8px;
-    font-size: 16px;
- border: 2px solid #d35400;
-    border-radius: 5px 0 0 5px;
-    outline: none;
-  }
-  #search-button {
-    padding: 8px 15px;
-    font-size: 16px;
-    background-color: #d35400;
-    border: none;
-    border-radius: 0 5px 5px 0;
-    color: white;
-    cursor: pointer;
-  }
-  #search-button:hover {
-    background-color: #a84300;
-  }
-  .product {
-    border: 1px solid #d35400;
-    background: #fdf2e9;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-  }
-  .product h3 {
-    margin: 0 0 5px 0;
-    color: #a84300;
-  }
-  .product p {
-    margin: 0;
-  }
-  /* מבצעים */
-  #offers-image-text {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  #offers-image-text img {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-  }
-  #offers-texts p {
-    font-size: 16px;
-    font-weight: bold;
-    color: #6e2c00;
-    margin: 8px 0;
-  }
-  /* עיגולים מחזיקים את המשפטים - רק הצגה של המיקום */
-  .highlight-box {
-    border: 2px solid #6e2c00;
-    border-radius: 20px;
-    padding: 10px 15px;
-    margin: 10px 0;
-    font-weight: bold;
-    color: #6e2c00;
-  }
-  /* לשוניות */
-  .hidden {
-    display: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>מתוקים באבן יהודה</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+      background-color: #fff0f5;
+    }
+    header {
+      background-color: #ff69b4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    nav {
+      background-color: #ffb6c1;
+      padding: 15px;
+      width: 200px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      background-color: #d14a8f;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+    }
+    nav a:hover, nav a.active {
+      background-color: #ff69b4;
+    }
+    main {
+      margin-right: 220px;
+      padding: 20px;
+      padding-bottom: 60px;
+    }
+    #search-bar {
+      margin-bottom: 20px;
+      display: flex;
+      max-width: 400px;
+    }
+ #search-input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #d14a8f;
+      border-radius: 5px 0 0 5px;
+    }
+    #search-button {
+      padding: 10px 20px;
+      background-color: #d14a8f;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 0 5px 5px 0;
+    }
+    #search-button:hover {
+      background-color: #ff69b4;
+    }
+    .product {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: white;
+    }
+    #offers-container {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    #offers-container img {
+      width: 180px;
+      border-radius: 8px;
+    }
+    .highlight-box {
+      border: 2px solid #d14a8f;
+      border-radius: 20px;
+      padding: 10px;
+      margin: 6px 0;
+      color: #555;
+      font-weight: bold;
+    }
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: none;
+      color: #d14a8f;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 <header>מתוקים באבן יהודה</header>
 <nav>
-  <a id="home-tab">דף הבית</a>
-  <a id="offers-tab">מבצעים</a>
-[12:55, 21.6.2025] סאלי 2: <a id="hours-tab">שעות פעילות</a>
-  <a id="delivery-tab">משלוחים</a>
+  <a id="tab-home" class="active">דף הבית</a>
+ <a id="tab-offers">מבצעים</a>
+  <a id="tab-hours">שעות פעילות</a>
+  <a id="tab-delivery">משלוחים</a>
 </nav>
 <main>
-  <section id="home-section">
+  <section id="home" class="active">
     <div id="search-bar">
-      <input type="text" id="search-input" placeholder="חפש מוצר..." />
+      <input id="search-input" placeholder="חפש מוצר..." />
       <button id="search-button">חפש</button>
     </div>
-    <div id="products-list">
-      <div class="product" data-name="עוגיות שוקולד">
-        <h3>עוגיות שוקולד - 4 שקלים</h3>
-        <p>טעם מתוק וממכר של עוגיות שוקולד ביתיות.</p>
-      </div>
-      <div class="product" data-name="שוקו">
-        <h3>שוקו - 6 שקלים</h3>
-        <p>משקה שוקולד קר, מושלם בכל עונה.</p>
-      </div>
-      <div class="product" data-name="קרפים">
-        <h3>מארז 10 קרפים - 15 שקלים</h3>
-        <p>קרפים פריכים ומקצועיים, טעימים במיוחד.</p>
-      </div>
-    </div>
+    <div class="product">עוגיות שוקולד – 4 שקלים</div>
+    <div class="product">שוקו – 6 שקלים</div>
+    <div class="product">מארז 10 קרפים – 15 שקלים</div>
   </section>
-
-  <section id="offers-section" class="hidden">
-    <div id="offers-image-text">
-      <img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg/v1/fill/w_1500,h_1500,al_c,q_90/%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%9E%D7%91%D7%A6%D7%A2%D7%99%D7%9D%20%D7%99%D7%95%D7%9C%D7%99%202018-3.jpg" alt="מבצעים" />
-      <div id="offers-texts">
-        <p class="highlight-box">שתי שוקו בעשרה שקלים!</p>
-        <p class="highlight-box">שלושה עוגיות בעשרה שקלים!</p>
- <p class="highlight-box">עוגיה+שוקו בתשעה שקלים!</p>
+  <section id="offers">
+    <div id="offers-container">
+      <img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg/v1/fill/w_1500,h_1500,al_c,q_90/%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%9E%D7%91%D7%A6%D7%A2%D7%99%D7%9D%20%D7%99%D7%95%D7%9C%D7%99%202018-3.jpg" alt="מבצעים">
+      <div>
+        <p class="highlight-box">שתי שוקו בעשרה שקלים</p>
+        <p class="highlight-box">שלושה עוגיות בעשרה שקלים</p>
+        <p class="highlight-box">עוגיה+שוקו בתשעה שקלים</p>
       </div>
     </div>
   </section>
-
-  <section id="hours-section" class="hidden">
-    <h2>שעות פעילות</h2>
-    <p>האתר עודכן בזמן אמת.</p>
+  <section id="hours">
+    <p>שעות פעילות יפורסמו בקרוב.</p>
   </section>
-
-  <section id="delivery-section" class="hidden">
-    <h2>משלוחים</h2>
-    <p><strong>איסוף עצמי:</strong><br />להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br />להגיע לכתובת השרון 1.</p>
-    <p><strong>משלוח:</strong><br />בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br />להזמנה התקשרו או כתבו הודעה למספר - 054-5611680</p>
+  <section id="delivery">
+    <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br>כתובת: השרון 1</p>
+ <p><strong>משלוח:</strong><br>בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054-5611680</p>
   </section>
-
-  <div id="date-time"></div>
 </main>
-
+<footer><div id="date-time">טוען תאריך ושעה…</div></footer>
 <script>
-  // עדכון תאריך ושעה אחת בלבד
-  function updateDateTime() {
-    const dt = new Date();
-    const options = { 
-      year: 'numeric', month: 'numeric', day: 'numeric',
-      hour: '2-digit', minute: '2-digit', second: '2-digit',
-      hour12: false 
-    };
-    document.getElementById('date-time').textContent = dt.toLocaleDateString('he-IL', options) + '   ' + dt.toLocaleTimeString('he-IL', options);
-  }
-  setInterval(updateDateTime, 1000);
-  updateDateTime();
-
-  // ניווט לשוניות
-  const tabs = {
-    "home-tab": "home-section",
-    "offers-tab": "offers-section",
-    "hours-tab": "hours-section",
-    "delivery-tab": "delivery-section"
-  };
-Object.keys(tabs).forEach(tabId => {
-    document.getElementById(tabId).addEventListener('click', () => {
-      Object.values(tabs).forEach(secId => {
-        document.getElementById(secId).classList.add('hidden');
+  const tabs = ['home','offers','hours','delivery'];
+  tabs.forEach(t => {
+    document.getElementById('tab-'+t).onclick = () => {
+      tabs.forEach(x => {
+        document.getElementById(x).classList.remove('active');
+        document.getElementById('tab-'+x).classList.remove('active');
       });
-      document.getElementById(tabs[tabId]).classList.remove('hidden');
-    });
+      document.getElementById(t).classList.add('active');
+      document.getElementById('tab-'+t).classList.add('active');
+    };
   });
-
-  // עמדת חיפוש
-  const searchButton = document.getElementById('search-button');
-  searchButton.addEventListener('click', () => {
-    const query = document.getElementById('search-input').value.trim();
-    if (!query) return;
-    const products = document.querySelectorAll('.product');
-    products.forEach(p => {
-      if (p.dataset.name.includes(query)) {
-        p.style.display = 'block';
-      } else {
-        p.style.display = 'none';
-      }
+  document.getElementById('search-button').onclick = () => {
+    const q = document.getElementById('search-input').value.trim();
+    document.querySelectorAll('#home .product').forEach(p => {
+      p.style.display = p.textContent.includes(q) ? 'block' : 'none';
     });
-    // עבור ללשונית הבית ותראה את התוצאות
-    Object.values(tabs).forEach(secId => {
-      document.getElementById(secId).classList.add('hidden');
-    });
-    document.getElementById('home-section').classList.remove('hidden');
-  });
+  };
+  function updateDate(){
+    const now = new Date();
+    const opts = {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+    document.getElementById('date-time').textContent = now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+  }
+  updateDate();
+  setInterval(updateDate,1000);
 </script>
 </body>
 </html>
 ```
-
----

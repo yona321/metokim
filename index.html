@@ -1,82 +1,84 @@
  <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>מתוקים באבן יהודה</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial;
       direction: rtl;
       margin: 0;
       padding: 0;
       background-color: #fff0f5;
+      min-height: 100vh;
+      position: relative;
     }
     header {
-      background-color: #ff69b4;
+      background: #ff69b4;
       color: white;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
       font-size: 28px;
       font-weight: bold;
     }
     nav {
-      background-color: #ffb6c1;
-      padding: 15px;
-      width: 200px;
-      height: 100vh;
+      background: #ff69b4;
       position: fixed;
-      top: 0;
-      right: 0;
+      top: 0; bottom: 0; right: 0;
+      width: 180px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      padding-top: 80px;
+      box-sizing: border-box;
     }
     nav a {
       color: white;
+      padding: 15px;
       text-decoration: none;
-      background-color: #d14a8f;
-      padding: 10px;
-      border-radius: 5px;
       text-align: center;
       font-weight: bold;
+      cursor: pointer;
     }
     nav a:hover, nav a.active {
-      background-color: #ff69b4;
+      background: #d14a8f;
     }
     main {
-      margin-right: 220px;
+margin-right: 180px;
       padding: 20px;
       padding-bottom: 60px;
+      box-sizing: border-box;
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
     }
     #search-bar {
-      margin-bottom: 20px;
       display: flex;
+      margin-bottom: 20px;
+      gap: 10px;
       max-width: 400px;
     }
- #search-input {
+    #search-input {
       flex: 1;
       padding: 10px;
-      font-size: 16px;
       border: 2px solid #d14a8f;
       border-radius: 5px 0 0 5px;
     }
     #search-button {
       padding: 10px 20px;
-      background-color: #d14a8f;
-      border: none;
+      background: #d14a8f;
       color: white;
+      border: none;
       cursor: pointer;
-      font-size: 16px;
       border-radius: 0 5px 5px 0;
-    }
-    #search-button:hover {
-      background-color: #ff69b4;
     }
     .product {
       border: 1px solid #ddd;
-      padding: 15px;
       border-radius: 8px;
+      padding: 15px;
       margin-bottom: 10px;
       background: white;
     }
@@ -95,31 +97,31 @@
       border-radius: 20px;
       padding: 10px;
       margin: 6px 0;
-      color: #555;
       font-weight: bold;
+      color: #555;
     }
     footer {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: none;
-      color: #d14a8f;
+      bottom: 0; left: 0; right: 0;
       text-align: center;
       padding: 10px;
       font-size: 14px;
+ color: #d14a8f;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
+
 <header>מתוקים באבן יהודה</header>
+
 <nav>
-  <a id="tab-home" class="active">דף הבית</a>
- <a id="tab-offers">מבצעים</a>
-  <a id="tab-hours">שעות פעילות</a>
-  <a id="tab-delivery">משלוחים</a>
+  <a id="home-tab" class="active">דף הבית</a>
+  <a id="offers-tab">מבצעים</a>
+  <a id="hours-tab">שעות פעילות</a>
+  <a id="delivery-tab">משלוחים</a>
 </nav>
+
 <main>
   <section id="home" class="active">
     <div id="search-bar">
@@ -130,6 +132,7 @@
     <div class="product">שוקו – 6 שקלים</div>
     <div class="product">מארז 10 קרפים – 15 שקלים</div>
   </section>
+
   <section id="offers">
     <div id="offers-container">
       <img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg/v1/fill/w_1500,h_1500,al_c,q_90/%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%9E%D7%91%D7%A6%D7%A2%D7%99%D7%9D%20%D7%99%D7%95%D7%9C%D7%99%202018-3.jpg" alt="מבצעים">
@@ -140,41 +143,50 @@
       </div>
     </div>
   </section>
+
   <section id="hours">
     <p>שעות פעילות יפורסמו בקרוב.</p>
   </section>
+
   <section id="delivery">
-    <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br>כתובת: השרון 1</p>
- <p><strong>משלוח:</strong><br>בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054-5611680</p>
+p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br>כתובת: השרון 1</p>
+    <p><strong>משלוח:</strong><br>בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054-5611680</p>
   </section>
 </main>
-<footer><div id="date-time">טוען תאריך ושעה…</div></footer>
+
+<footer id="date-time">טוען תאריך ושעה…</footer>
+
 <script>
   const tabs = ['home','offers','hours','delivery'];
-  tabs.forEach(t => {
-    document.getElementById('tab-'+t).onclick = () => {
-      tabs.forEach(x => {
-        document.getElementById(x).classList.remove('active');
-        document.getElementById('tab-'+x).classList.remove('active');
+  tabs.forEach(name => {
+    document.getElementById(name+'-tab').onclick = () => {
+      tabs.forEach(n => {
+        document.getElementById(n).classList.remove('active');
+        document.getElementById(n+'-tab').classList.remove('active');
       });
-      document.getElementById(t).classList.add('active');
-      document.getElementById('tab-'+t).classList.add('active');
+      document.getElementById(name).classList.add('active');
+      document.getElementById(name+'-tab').classList.add('active');
     };
   });
+
   document.getElementById('search-button').onclick = () => {
     const q = document.getElementById('search-input').value.trim();
     document.querySelectorAll('#home .product').forEach(p => {
       p.style.display = p.textContent.includes(q) ? 'block' : 'none';
     });
+    // לוודא תצוגה בדף הבית
+    document.getElementById('home-tab').click();
   };
-  function updateDate(){
+
+  function updateDate() {
     const now = new Date();
     const opts = {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
-    document.getElementById('date-time').textContent = now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+ document.getElementById('date-time').textContent = now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
   }
   updateDate();
-  setInterval(updateDate,1000);
+  setInterval(updateDate, 1000);
 </script>
+
 </body>
 </html>
 ```

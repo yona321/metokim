@@ -1,125 +1,133 @@
  <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="he">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>מתוקים באבן יהודה</title>
-  <style>
-    body {
-      font-family: Arial;
-      direction: rtl;
-      margin: 0;
-      padding: 0;
-      background-color: #fff0f5;
-      min-height: 100vh;
-      position: relative;
-    }
-    header {
-      background: #ff69b4;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    nav {
-      background: #ff69b4;
-      position: fixed;
-      top: 0; bottom: 0; right: 0;
-      width: 180px;
-      display: flex;
-      flex-direction: column;
-      padding-top: 80px;
-      box-sizing: border-box;
-    }
-    nav a {
-      color: white;
-      padding: 15px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-      cursor: pointer;
-    }
-    nav a:hover, nav a.active {
-      background: #d14a8f;
-    }
-    main {
- margin-right: 180px;
-      padding: 20px;
-      padding-bottom: 60px;
-      box-sizing: border-box;
-    }
-    section {
-      display: none;
-    }
-    section.active {
-      display: block;
-    }
-    #search-bar {
-      display: flex;
-      margin-bottom: 20px;
-      gap: 10px;
-      max-width: 400px;
-    }
-    #search-input {
-      flex: 1;
-      padding: 10px;
-      border: 2px solid #d14a8f;
-      border-radius: 5px 0 0 5px;
-    }
-    #search-button {
-      padding: 10px 20px;
-      background: #d14a8f;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 0 5px 5px 0;
-    }
-    .product {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 10px;
-      background: white;
-    }
-    #offers-container {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    #offers-container img {
-      width: 180px;
-      border-radius: 8px;
-    }
-    .highlight-box {
-      border: 2px solid #d14a8f;
-      border-radius: 20px;
-      padding: 10px;
-      margin: 6px 0;
-      font-weight: bold;
-      color: #555;
-    }
-    footer {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-color: #d14a8f;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>מתוקים באבן יהודה</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+    margin: 0;
+    padding: 0;
+    background-color: #fff0f5;
+    min-height: 100vh;
+    position: relative;
+  }
+  header {
+    background: #ff69b4;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  nav {
+    background: #ff69b4;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    box-sizing: border-box;
+  }
+  nav a {
+    color: white;
+    padding: 15px;
+ text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  nav a:hover,
+  nav a.active {
+    background: #d14a8f;
+  }
+  main {
+    margin-right: 180px;
+    padding: 20px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+  }
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+  #search-bar {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 10px;
+    max-width: 400px;
+  }
+  #search-input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #d14a8f;
+    border-radius: 5px 0 0 5px;
+  }
+  #search-button {
+    padding: 10px 20px;
+    background: #d14a8f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+  }
+  #search-button:hover {
+    background: #ff69b4;
+  }
+  .product {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: white;
+  }
+  #offers-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  #offers-container img {
+    width: 180px;
+    border-radius: 8px;
+  }
+  .highlight-box {
+    border: 2px solid #d14a8f;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 6px 0;
+    font-weight: bold;
+    color: #555;
+  }
+  footer {
+    position: absolute;
+ bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #d14a8f;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
 
 <header>מתוקים באבן יהודה</header>
 
 <nav>
-  <a id="home-tab" class="active">דף הבית</a>
-  <a id="offers-tab">מבצעים</a>
-  <a id="hours-tab">שעות פעילות</a>
-  <a id="delivery-tab">משלוחים</a>
+  <a id="tab-home" class="active">דף הבית</a>
+  <a id="tab-offers">מבצעים</a>
+  <a id="tab-hours">שעות פעילות</a>
+  <a id="tab-delivery">משלוחים</a>
 </nav>
 
 <main>
@@ -143,13 +151,12 @@ color: #d14a8f;
       </div>
     </div>
   </section>
-
-  <section id="hours">
+<section id="hours">
     <p>שעות פעילות יפורסמו בקרוב.</p>
   </section>
 
   <section id="delivery">
- <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br>כתובת: השרון 1</p>
+    <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br>כתובת: השרון 1</p>
     <p><strong>משלוח:</strong><br>בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054-5611680</p>
   </section>
 </main>
@@ -174,14 +181,22 @@ color: #d14a8f;
     document.querySelectorAll('#home .product').forEach(p => {
       p.style.display = p.textContent.includes(q) ? 'block' : 'none';
     });
-    // לוודא תצוגה בדף הבית
-    document.getElementById('home-tab').click();
+    document.getElementById('tab-home').click();
   };
 
   function updateDate() {
     const now = new Date();
-    const opts = {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
-document.getElementById('date-time').textContent = now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+    const opts = {
+      year:'numeric',
+      month:'2-digit',
+ day:'2-digit',
+      hour:'2-digit',
+      minute:'2-digit',
+      second:'2-digit'
+    };
+    document.getElementById('date-time').textContent =
+      now.toLocaleDateString('he-IL', opts) + ' ' +
+      now.toLocaleTimeString('he-IL', opts);
   }
   updateDate();
   setInterval(updateDate, 1000);

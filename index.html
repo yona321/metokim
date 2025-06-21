@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="he">
 <head>
 <meta charset="UTF-8" />
@@ -7,216 +8,225 @@
 <style>
   body {
     font-family: Arial, sans-serif;
-    margin: 0; padding: 0;
+    margin: 0;
     direction: rtl;
-    background: #fff;
+    background: #fff4e6;
   }
   header {
-    background-color: #c94f5a;
+    background-color: #d35400;
     color: white;
     text-align: center;
     padding: 20px 10px;
-    font-size: 2em;
+    font-size: 28px;
+    font-weight: bold;
   }
   nav {
-    width: 160px;
-    background-color: #d87387;
+    width: 200px;
+    background: #f8c471;
     height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding-top: 60px;
-    box-sizing: border-box;
-  }
-  nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  nav li {
-    margin-bottom: 20px;
+    float: right;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
   }
   nav a {
-    color: white;
+    padding: 15px 20px;
     text-decoration: none;
+    color: #6e2c00;
     font-weight: bold;
-    padding: 10px 15px;
-    display: block;
-    border-radius: 4px;
+    border-bottom: 1px solid #e59866;
+    cursor: pointer;
   }
-  nav a:hover, nav a.active {
-    background-color: #b03d49;
+  nav a:hover {
+    background-color: #d35400;
+    color: white;
   }
   main {
-    margin-right: 160px;
+    margin-right: 210px;
     padding: 20px;
   }
-  section {
-    display: none;
+  #date-time {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6e2c00;
+    text-align: center;
   }
-  section.active {
-    display: block;
-  }
-  .product {
-    margin-bottom: 30px;
-  }
-  .product h3 {
-    margin-bottom: 8px;
-  }
-  #search-container {
+  #search-bar {
     margin-bottom: 20px;
   }
   #search-input {
     width: 70%;
     padding: 8px;
     font-size: 16px;
- border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
+ border: 2px solid #d35400;
+    border-radius: 5px 0 0 5px;
     outline: none;
   }
-  #search-btn {
-    padding: 9px 15px;
+  #search-button {
+    padding: 8px 15px;
     font-size: 16px;
-    border: 1px solid #c94f5a;
-    background-color: #c94f5a;
+    background-color: #d35400;
+    border: none;
+    border-radius: 0 5px 5px 0;
     color: white;
     cursor: pointer;
-    border-radius: 0 4px 4px 0;
   }
-  #search-btn:hover {
-    background-color: #b03d49;
+  #search-button:hover {
+    background-color: #a84300;
   }
-  footer {
-    background-color: #d87387;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+  .product {
+    border: 1px solid #d35400;
+    background: #fdf2e9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  .product h3 {
+    margin: 0 0 5px 0;
+    color: #a84300;
+  }
+  .product p {
+    margin: 0;
+  }
+  /* מבצעים */
+  #offers-image-text {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  #offers-image-text img {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+  }
+  #offers-texts p {
     font-size: 16px;
+    font-weight: bold;
+    color: #6e2c00;
+    margin: 8px 0;
   }
-  .promo-text {
-    margin-top: 20px;
-    font-size: 18px;
-    color: #3d3d3d;
+  /* עיגולים מחזיקים את המשפטים - רק הצגה של המיקום */
+  .highlight-box {
+    border: 2px solid #6e2c00;
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #6e2c00;
   }
-  .product-description {
-    color: #555;
-    font-size: 14px;
-    margin-top: 4px;
+  /* לשוניות */
+  .hidden {
+    display: none;
   }
 </style>
 </head>
 <body>
-
 <header>מתוקים באבן יהודה</header>
-
 <nav>
-  <ul>
-    <li><a href="#" class="nav-link active" data-target="home">דף הבית</a></li>
-    <li><a href="#" class="nav-link" data-target="promotions">מבצעים</a></li>
-    <li><a href="#" class="nav-link" data-target="shipping">משלוחים</a></li>
-    <li><a href="#" class="nav-link" data-target="hours">שעות פעילות</a></li>
-  </ul>
+  <a id="home-tab">דף הבית</a>
+  <a id="offers-tab">מבצעים</a>
+[12:55, 21.6.2025] סאלי 2: <a id="hours-tab">שעות פעילות</a>
+  <a id="delivery-tab">משלוחים</a>
 </nav>
-
 <main>
-  <section id="home" class="active">
-    <div id="search-container">
-      <input type="text" id="search-input" placeholder="חפש מוצר... (עוגיות שוקולד, שוקו, קרפ)" />
- <button id="search-btn">חפש</button>
+  <section id="home-section">
+    <div id="search-bar">
+      <input type="text" id="search-input" placeholder="חפש מוצר..." />
+      <button id="search-button">חפש</button>
     </div>
     <div id="products-list">
-      <div class="product" data-keywords="עוגיות שוקולד עוגיה עוגיות שוקולד-4שקל">
+      <div class="product" data-name="עוגיות שוקולד">
         <h3>עוגיות שוקולד - 4 שקלים</h3>
-        <p class="product-description">עוגיות שוקולד טעימות ומשובחות.</p>
+        <p>טעם מתוק וממכר של עוגיות שוקולד ביתיות.</p>
       </div>
-      <div class="product" data-keywords="שוקו שוקו-6שקל">
+      <div class="product" data-name="שוקו">
         <h3>שוקו - 6 שקלים</h3>
-        <p class="product-description">שוקו טעים ומרענן.</p>
+        <p>משקה שוקולד קר, מושלם בכל עונה.</p>
       </div>
-      <div class="product" data-keywords="קרפים מארז 10 קרפים-15 שקלים קרפ">
+      <div class="product" data-name="קרפים">
         <h3>מארז 10 קרפים - 15 שקלים</h3>
-        <p class="product-description">קרפים רכים וטעימים.</p>
+        <p>קרפים פריכים ומקצועיים, טעימים במיוחד.</p>
       </div>
     </div>
   </section>
 
-  <section id="promotions">
-    <p>!שתי שוקו בעשרה שקלים!</p>
-    <p>!שלושה עוגיות בעשרה שקלים!</p>
-    <p>!עוגיה+שוקו בתשעה שקלים!</p>
+  <section id="offers-section" class="hidden">
+    <div id="offers-image-text">
+      <img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg/v1/fill/w_1500,h_1500,al_c,q_90/%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%9E%D7%91%D7%A6%D7%A2%D7%99%D7%9D%20%D7%99%D7%95%D7%9C%D7%99%202018-3.jpg" alt="מבצעים" />
+      <div id="offers-texts">
+        <p class="highlight-box">שתי שוקו בעשרה שקלים!</p>
+        <p class="highlight-box">שלושה עוגיות בעשרה שקלים!</p>
+ <p class="highlight-box">עוגיה+שוקו בתשעה שקלים!</p>
+      </div>
+    </div>
   </section>
 
-  <section id="shipping">
-    <p><strong>איסוף עצמי</strong></p>
-    <p>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף</p>
-    <p>להגיע לכתובת השרון 1!</p>
-    <br />
-    <p><strong>משלוח!</strong></p>
-    <p>בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!</p>
-    <p>להזמנה התקשרו או כיתבו הודעה למספר-0545611680</p>
+  <section id="hours-section" class="hidden">
+    <h2>שעות פעילות</h2>
+    <p>האתר עודכן בזמן אמת.</p>
   </section>
 
-  <section id="hours">
-    <p>שעות הפעילות יופיעו כאן בעתיד.</p>
+  <section id="delivery-section" class="hidden">
+    <h2>משלוחים</h2>
+    <p><strong>איסוף עצמי:</strong><br />להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br />להגיע לכתובת השרון 1.</p>
+    <p><strong>משלוח:</strong><br />בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br />להזמנה התקשרו או כתבו הודעה למספר - 054-5611680</p>
   </section>
+
+  <div id="date-time"></div>
 </main>
- <footer id="footer-date">טוען תאריך ושעה…</footer>
 
 <script>
-  // ניווט בין לשוניות
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('main section');
+  // עדכון תאריך ושעה אחת בלבד
+  function updateDateTime() {
+    const dt = new Date();
+    const options = { 
+      year: 'numeric', month: 'numeric', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false 
+    };
+    document.getElementById('date-time').textContent = dt.toLocaleDateString('he-IL', options) + '   ' + dt.toLocaleTimeString('he-IL', options);
+  }
+  setInterval(updateDateTime, 1000);
+  updateDateTime();
 
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const target = link.getAttribute('data-target');
-      navLinks.forEach(l => l.classList.remove('active'));
-      link.classList.add('active');
-      sections.forEach(sec => {
-        if (sec.id === target) {
-          sec.classList.add('active');
-        } else {
-          sec.classList.remove('active');
-        }
+  // ניווט לשוניות
+  const tabs = {
+    "home-tab": "home-section",
+    "offers-tab": "offers-section",
+    "hours-tab": "hours-section",
+    "delivery-tab": "delivery-section"
+  };
+Object.keys(tabs).forEach(tabId => {
+    document.getElementById(tabId).addEventListener('click', () => {
+      Object.values(tabs).forEach(secId => {
+        document.getElementById(secId).classList.add('hidden');
       });
+      document.getElementById(tabs[tabId]).classList.remove('hidden');
     });
   });
 
-  // חיפוש פשוט
-  const searchBtn = document.getElementById('search-btn');
-  const searchInput = document.getElementById('search-input');
-  const products = document.querySelectorAll('#products-list .product');
-
-  searchBtn.addEventListener('click', () => {
-    const query = searchInput.value.trim().toLowerCase();
-    if (!query) {
-      products.forEach(p => p.style.display = 'block');
-      return;
-    }
+  // עמדת חיפוש
+  const searchButton = document.getElementById('search-button');
+  searchButton.addEventListener('click', () => {
+    const query = document.getElementById('search-input').value.trim();
+    if (!query) return;
+    const products = document.querySelectorAll('.product');
     products.forEach(p => {
-      const keywords = p.getAttribute('data-keywords');
-      if (keywords.toLowerCase().includes(query)) {
+      if (p.dataset.name.includes(query)) {
         p.style.display = 'block';
       } else {
         p.style.display = 'none';
       }
     });
- });
-
-  // תאריך ושעה בתחתית - עדכון כל שניה
-  function updateDateTime() {
-    const footer = document.getElementById('footer-date');
-    const now = new Date();
-    const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour:'2-digit', minute:'2-digit', second:'2-digit' };
-    footer.textContent = now.toLocaleString('he-IL', options);
-  }
-  updateDateTime();
-  setInterval(updateDateTime, 1000);
+    // עבור ללשונית הבית ותראה את התוצאות
+    Object.values(tabs).forEach(secId => {
+      document.getElementById(secId).classList.add('hidden');
+    });
+    document.getElementById('home-section').classList.remove('hidden');
+  });
 </script>
-
 </body>
 </html>
 ```
+
+---

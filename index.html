@@ -1,12 +1,12 @@
  <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>מתוקים באבן יהודה</title>
 <style>
   body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     direction: rtl;
     margin: 0;
     padding: 0;
@@ -39,8 +39,7 @@
     text-align: center;
     font-weight: bold;
     cursor: pointer;
-  }
-  nav a:hover, nav a.active {
+ nav a:hover, nav a.active {
     background: #d14a8f;
   }
   main {
@@ -57,7 +56,7 @@
   }
   #search-bar {
     display: flex;
- margin-bottom: 20px;
+    margin-bottom: 20px;
     gap: 10px;
     max-width: 400px;
   }
@@ -66,6 +65,7 @@
     padding: 10px;
     border: 2px solid #d14a8f;
     border-radius: 5px 0 0 5px;
+    outline: none;
   }
   #search-button {
     padding: 10px 20px;
@@ -109,7 +109,7 @@
     left: 0; right: 0;
     text-align: center;
     padding: 10px;
-    font-size: 14px;
+ font-size: 14px;
     color: #d14a8f;
     font-weight: bold;
   }
@@ -120,14 +120,14 @@
 <header>מתוקים באבן יהודה</header>
 
 <nav>
-  <a id="tab-home">דף הבית</a>
+  <a id="tab-home" class="active">דף הבית</a>
   <a id="tab-offers">מבצעים</a>
   <a id="tab-hours">שעות פעילות</a>
   <a id="tab-delivery">משלוחים</a>
 </nav>
 
 <main>
-<section id="home" class="active">
+  <section id="home" class="active">
     <div id="search-bar">
       <input id="search-input" placeholder="חפש מוצר..." />
       <button id="search-button">חפש</button>
@@ -141,9 +141,9 @@
     <div id="offers-container">
       <img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg/v1/fill/w_1500,h_1500,al_c,q_90/%D7%A8%D7%99%D7%91%D7%95%D7%A2%20%D7%9E%D7%91%D7%A6%D7%A2%D7%99%D7%9D%20%D7%99%D7%95%D7%9C%D7%99%202018-3.jpg" alt="מבצעים">
       <div>
-        <p class="highlight-box">שתי שוקו בעשרה שקלים!</p>
-        <p class="highlight-box">שלושה עוגיות בעשרה שקלים!</p>
-        <p class="highlight-box">עוגיה + שוקו בתשעה שקלים!</p>
+        <p class="highlight-box">שתי שוקו בעשרה שקלים</p>
+        <p class="highlight-box">שלושה עוגיות בעשרה שקלים</p>
+        <p class="highlight-box">עוגיה + שוקו בתשעה שקלים</p>
       </div>
     </div>
   </section>
@@ -151,39 +151,44 @@
   <section id="hours">
     <p>שעות פעילות יפורסמו בקרוב.</p>
   </section>
-
-  <section id="delivery">
+[21:55, 21.6.2025] סאלי 2: <section id="delivery">
     <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה לאיסוף<br>כתובת: השרון 1</p>
-    <p><strong>משלוח:</strong><br>בתוספת 6 שקלים אנחנו נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054-5611680</p>
+    <p><strong>משלוח:</strong><br>בתוספת 6 שקלים נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054-5611680</p>
   </section>
 </main>
- <footer id="date-time">טוען תאריך ושעה…</footer>
+
+<footer id="date-time">טוען תאריך ושעה…</footer>
 
 <script>
-  const tabs = ['home', 'offers', 'hours', 'delivery'];
+  // ניווט טאבים
+  const tabs = ['home','offers','hours','delivery'];
   tabs.forEach(name => {
-    document.getElementById(tab-name).addEventListener('click', () => 
+    document.getElementById(tab-name).onclick = () => 
       tabs.forEach(n => 
         document.getElementById(n).classList.remove('active');
         document.getElementById(tab-{n}).classList.remove('active');
       });
       document.getElementById(name).classList.add('active');
       document.getElementById(tab-${name}).classList.add('active');
-    });
+    };
   });
 
-  document.getElementById('search-button').addEventListener('click', () => {
+  // חיפוש מוצרים
+  document.getElementById('search-button').onclick = () => {
     const q = document.getElementById('search-input').value.trim();
     document.querySelectorAll('#home .product').forEach(p => {
       p.style.display = p.textContent.includes(q) ? 'block' : 'none';
     });
     document.getElementById('tab-home').click();
-  });
+  };
 
+  // תאריך ושעה
   function updateDate() {
     const now = new Date();
-    const opts = { year:'numeric', month:'2-digit', day:'2-digit',
-      hour:'2-digit', minute:'2-digit', second:'2-digit' };
+    const opts = {
+      year:'numeric', month:'2-digit', day:'2-digit',
+ hour:'2-digit', minute:'2-digit', second:'2-digit'
+    };
     document.getElementById('date-time').textContent =
       now.toLocaleDateString('he-IL', opts) + ' ' +
       now.toLocaleTimeString('he-IL', opts);

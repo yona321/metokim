@@ -1,4 +1,4 @@
-```html
+ ```html
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
@@ -6,23 +6,28 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>מתוקים באבן יהודה</title>
 <style>
-body{font-family:Arial,sans-serif;direction:rtl;margin:0;padding:0;background:#fff0f5;min-height:100vh;position:relative;}
-header{background:#ff69b4;color:#fff;text-align:center;padding:20px;font-size:28px;font-weight:bold;}
-nav{background:#ff69b4;position:fixed;top:0;bottom:0;right:0;width:180px;display:flex;flex-direction:column;padding-top:80px;box-sizing:border-box;}
-nav a{color:#fff;padding:15px;text-decoration:none;text-align:center;cursor:pointer;}
-nav a.active,nav a:hover{background:#d14a8f;}
-main{margin-right:180px;padding:20px;padding-bottom:60px;box-sizing:border-box;}
-section{display:none;}
-section.active{display:block;}
+body{font-family:Arial,sans-serif;…
+ main{margin-right:180px;padding:20px;padding-top:100px;box-sizing:border-box;}
+section{display:none;opacity:0;transition:opacity .3s;}
+section.active{display:block;opacity:1;}
 #search-bar{display:flex;gap:10px;margin-bottom:20px;max-width:400px;}
 #search-input{flex:1;padding:10px;border:2px solid #d14a8f;border-radius:5px 0 0 5px;outline:none;}
- #search-button{padding:10px 20px;background:#d14a8f;color:#fff;border:none;cursor:pointer;border-radius:0 5px 5px 0;}
+#search-button{padding:10px 20px;background:#d14a8f;color:#fff;border:none;cursor:pointer;border-radius:0 5px 5px 0;}
 #search-button:hover{background:#ff69b4;}
-.product{background:#fff;border:1px solid #ddd;border-radius:8px;padding:15px;margin-bottom:10px;}
-#offers-container{display:flex;gap:15px;align-items:center;margin-bottom:20px;}
-#offers-container img{width:180px;border-radius:8px;}
+.product{background:#fff;border:1px solid #ddd;border-radius:8px;padding:15px;margin-bottom:10px;transition:transform .2s;}
+.product:hover{transform:scale(1.02);}
+#offers-container{display:flex;gap:15px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+#offers-container img{width:200px;border-radius:8px;}
 .highlight-box{border:2px solid #d14a8f;border-radius:20px;padding:10px;margin:6px 0;font-weight:bold;color:#555;}
-footer{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;font-size:14px;color:#d14a8f;font-weight:bold;}
+footer{position:fixed;bottom:0;left:180px;right:0;text-align:center;padding:10px;font-size:14px;color:#d14a8f;font-weight:bold;background:#fff}
+@media(max-width:600px){
+  nav{position:static;width:100%;display:flex;flex-direction:row;padding:0;}
+  nav a{flex:1;}
+  main{margin:0;padding-top:140px;}
+  footer{left:0;}
+}
+button.order-btn{padding:10px 15px;background:#d14a8f;color:#fff;border:none;border-radius:5px;cursor:pointer;transition:background .3s;}
+button.order-btn:hover{background:#ff69b4;}
 </style>
 </head>
 <body>
@@ -31,7 +36,7 @@ footer{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;
 
 <nav>
   <a id="tab-home" class="active">דף הבית</a>
-  <a id="tab-offers">מבצעים</a>
+  <a id="tab-offers">🍬 מבצעים</a>
   <a id="tab-hours">שעות פעילות</a>
   <a id="tab-delivery">משלוחים</a>
 </nav>
@@ -49,7 +54,7 @@ footer{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;
 
   <section id="offers">
     <div id="offers-container">
-<img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg">
+      <img src="https://static.wixstatic.com/media/ea098c_1bf6f8e0c3bb4974be6d6c611ea4e352~mv2_d_1500_1500_s_2.jpg">
       <div>
         <p class="highlight-box">שתי שוקו בעשרה שקלים</p>
         <p class="highlight-box">שלושה עוגיות בעשרה שקלים</p>
@@ -63,40 +68,37 @@ footer{position:absolute;bottom:0;left:0;right:0;text-align:center;padding:10px;
   </section>
 
   <section id="delivery">
-    <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה<br>כתובת: השרון 1</p>
+ <p><strong>איסוף עצמי:</strong><br>להגיע לאסוף רק לאחר קבלת הודעה שההזמנה מוכנה<br>כתובת: השרון 1</p>
     <p><strong>משלוח:</strong><br>בתוספת 6 שקלים נגיע עד לביתכם עם האוכל הטעים!<br>להזמנה: 054‑5611680</p>
+    <button class="order-btn" onclick="alert('תודה! ההזמנה שלך התקבלה 😊')">הזמן עכשיו</button>
   </section>
 </main>
 
 <footer id="date-time">טוען תאריך ושעה…</footer>
 
 <script>
-// הגדרת לשוניות
 ['home','offers','hours','delivery'].forEach(name=>{
-  document.getElementById('tab-'+name).addEventListener('click',()=>{
+  document.getElementById('tab-'+name).onclick = ()=>{
     ['home','offers','hours','delivery'].forEach(n=>{
       document.getElementById(n).classList.remove('active');
       document.getElementById('tab-'+n).classList.remove('active');
     });
     document.getElementById(name).classList.add('active');
     document.getElementById('tab-'+name).classList.add('active');
-  });
+  };
 });
 
-// חיפוש
-document.getElementById('search-button').addEventListener('click',()=>{
- const q = document.getElementById('search-input').value;
+document.getElementById('search-button').onclick = ()=>{
+  const q=document.getElementById('search-input').value;
   document.querySelectorAll('#home .product').forEach(p=>{
-    p.style.display = p.textContent.includes(q)?'block':'none';
+    p.style.display=p.textContent.includes(q)?'block':'none';
   });
   document.getElementById('tab-home').click();
-});
+};
 
-// תאריך ושעה
 function updateDate(){
-  const now = new Date();
-  const opts = {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
-  document.getElementById('date-time').textContent = now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
+  const now=new Date(),opts={year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit'};
+ document.getElementById('date-time').textContent=now.toLocaleDateString('he-IL',opts)+' '+now.toLocaleTimeString('he-IL',opts);
 }
 updateDate();
 setInterval(updateDate,1000);
